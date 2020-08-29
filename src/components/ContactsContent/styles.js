@@ -69,7 +69,7 @@ export const Content = styled.p`
 
   & > a {
     color: #FFFFFF;
-    padding: 0 10px;
+    padding: 0 20px;
   }
 `
 

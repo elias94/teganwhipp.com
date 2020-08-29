@@ -30,9 +30,13 @@ class Index extends React.PureComponent {
       showDotOnHover: false,
     })
 
-    console.log(cursorFx)
-
     this.setState({ cursorFx })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isBoxOpen !== this.state.isBoxOpen) {
+      this.state.cursorFx.refreshListeners()
+    }
   }
 
   closeBox = () => {
@@ -48,10 +52,6 @@ class Index extends React.PureComponent {
 
   render() {
     const { isBoxOpen, boxType, cursorFx } = this.state
-
-    if (cursorFx) {
-      cursorFx.refreshListeners()
-    }
 
     const HomeBox = (
       <TiltBox>

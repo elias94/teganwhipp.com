@@ -11,8 +11,8 @@ export default function AboutContent({ title, content }) {
       <Content>
         hello@teganwhipp.com
         <Space />
-        <a href="https://www.instagram.com/teganwhipp/"><FontAwesomeIcon icon={faInstagram} size="lg" /></a>
-        <a href="https://www.facebook.com/tegan.whipp"><FontAwesomeIcon icon={faFacebookF} size="lg" /></a>
+        <a href="https://www.instagram.com/teganwhipp/" data-hover><FontAwesomeIcon icon={faInstagram} size="lg" /></a>
+        <a href="https://www.facebook.com/tegan.whipp" data-hover><FontAwesomeIcon icon={faFacebookF} size="lg" /></a>
       </Content>
     </Container>
   );
