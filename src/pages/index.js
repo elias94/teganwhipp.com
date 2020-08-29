@@ -8,8 +8,8 @@ import HomeContainer from '../components/HomeContainer'
 import TiltBox from '../components/TiltBox'
 import ActionButton from '../components/ActionButton'
 import TopMenu from '../components/TopMenu'
-import ScreenfullToggle from '../components/ScreenfullToggle'
 import AboutContent from '../components/AboutContent'
+import ContactsContent from '../components/ContactsContent'
 
 class Index extends React.PureComponent {
   constructor(props) {
@@ -20,11 +20,19 @@ class Index extends React.PureComponent {
     this.state = {
       isBoxOpen: true,
       boxType: 'home',
+      cursorFx: null,
     }
   }
 
   componentDidMount() {
-    new CursorFX(this.cursorRef.current)
+    const cursorFx = new CursorFX(this.cursorRef.current, {
+      sizeOnHover: 55,
+      showDotOnHover: false,
+    })
+
+    console.log(cursorFx)
+
+    this.setState({ cursorFx })
   }
 
   closeBox = () => {
@@ -39,7 +47,12 @@ class Index extends React.PureComponent {
   }
 
   render() {
-    const { isBoxOpen, boxType } = this.state
+    const { isBoxOpen, boxType, cursorFx } = this.state
+
+    if (cursorFx) {
+      cursorFx.refreshListeners()
+    }
+
     const HomeBox = (
       <TiltBox>
         <MainTitle title="Tegan Whipp" subtitle="Creative artist made in Australia" />
@@ -60,11 +73,8 @@ class Index extends React.PureComponent {
 
     const ContactBox = (
       <TiltBox showClose onClose={this.closeBox}>
-        <AboutContent
+        <ContactsContent
           title="Contacts"
-          content={`Tegan Whipp is an indipendent painter and crafter currently traveling around Australia with her (amazing) boyfriend and an adorable dog called Opal.
-            She was born in 1996 in Kuranda, where she took inspiration for the creatures and the colors in her creations.
-            While not painting or thinking of new ideas, you could find her playing piano, taking care of her personal garden or eating sushi at the beach with Opal.`}
         />
       </TiltBox>
     )
@@ -81,7 +91,7 @@ class Index extends React.PureComponent {
           <title>Tegan Whipp - Artist</title>
         </Helmet>
         <div className="cursor" ref={this.cursorRef} />
-        <ScreenfullToggle />
+        {/* <ScreenfullToggle /> */}
         <SkyParallax />
         <TopMenu onClick={this.onOptionClick} />
         {renderExtra}

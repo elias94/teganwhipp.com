@@ -24,7 +24,7 @@ class TiltBox extends React.PureComponent {
 
   renderClose = () => {
     return (
-      <CloseButton onClick={this.props.onClose}>
+      <CloseButton onClick={this.props.onClose} data-hover>
         <CloseBar key="close1"></CloseBar>
         <CloseBar key="close2"></CloseBar>
       </CloseButton>

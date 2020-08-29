@@ -18,9 +18,9 @@ function TopMenu({ onClick }) {
         <MenuSlice key="slice3"></MenuSlice>
         <MenuSlice key="slice4"></MenuSlice>
         <MenuContainer>
-          <li><span role="button" tabIndex={0} onClick={() => onClick('home')}>Home</span></li>
-          <li><span role="button" tabIndex={0} onClick={() => onClick('about')}>About</span></li>
-          <li><span role="button" tabIndex={0} onClick={() => onClick('contact')}>Contacts</span></li>
+          <li><span role="button" data-hover tabIndex={0} onClick={() => onClick('home')}>Home</span></li>
+          <li><span role="button" data-hover tabIndex={0} onClick={() => onClick('about')}>About</span></li>
+          <li><span role="button" data-hover tabIndex={0} onClick={() => onClick('contact')}>Contacts</span></li>
         </MenuContainer>
       </MenuToggle>
     </Container>

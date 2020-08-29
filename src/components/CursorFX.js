@@ -25,6 +25,7 @@ class CursorFx {
     this.options = objectAssign({
       showCircle: true,
       showDot: true,
+      showDotOnHover: true,
       dataAttribute: 'data-hover',
       opacity: 1,
       borderColor: 'rgb(255, 255, 255)',
@@ -37,19 +38,27 @@ class CursorFx {
 
     const { showCircle, showDot } = this.options;
 
-    this.createElements(showCircle, showDot);
-    this.bounds = this.getBounds(showCircle, showDot);
+    this._createElements(showCircle, showDot);
+    this.bounds = this._getBounds(showCircle, showDot);
 
     this.isHover = false;
     this.opacity = this.options.opacity;
     this.mousePos = {x:0, y:0};
+
+    this.enterHandler = (e) => this.enter(e);
+    this.leaveHandler = (e) => this.leave(e);
     
-    this.initEvents();
-    this.initHover();
+    this._initEvents();
+    this._initHover();
     requestAnimationFrame(() => this.render());
   }
 
-  createElements(addCircle, addDot) {
+  refreshListeners() {
+    this._clearHover();
+    this._initHover();
+  }
+
+  _createElements(addCircle, addDot) {
     const circle = document.createElement('div');
     circle.classList.add('cursor__inner');
     circle.classList.add('cursor__inner--circle');
@@ -69,7 +78,7 @@ class CursorFx {
     }
   }
 
-  getBounds(addCircle, addDot) {
+  _getBounds(addCircle, addDot) {
     const bounds = {};
 
     if (addCircle) bounds.circle = this.DOM.circle.getBoundingClientRect();
@@ -78,21 +87,37 @@ class CursorFx {
     return bounds;
   }
 
-  initEvents() {
+  _initEvents() {
     window.addEventListener('mousemove', ev => this.mousePos = getMousePos(ev));
   }
 
-  initHover() {
+  _initHover() {
     [...document.querySelectorAll(`[${this.options.dataAttribute}]`)].forEach((link) => {
-      link.addEventListener('mouseenter', (e) => this.enter(e));
-      link.addEventListener('mouseleave', (e) => this.leave(e));
-      link.addEventListener('click', (e) => this.click(e));
+      link.addEventListener('mouseenter', this.enterHandler);
+      link.addEventListener('mouseleave', this.leaveHandler);
+      link.addEventListener('click', this.leaveHandler);
+    });
+  }
+
+  _clearHover() {
+    [...document.querySelectorAll(`[${this.options.dataAttribute}]`)].forEach((link) => {
+      link.removeEventListener('mouseenter', this.enterHandler);
+      link.removeEventListener('mouseleave', this.leaveHandler);
+      link.removeEventListener('click', this.leaveHandler);
     });
   }
 
   _renderDot() {
+    const { showDotOnHover } = this.options;
+    let opacity = 1;
+
+    if (!showDotOnHover && this.isHover) {
+      opacity = 0;
+    }
+    
     anime({
       targets: this.DOM.dot,
+      opacity: opacity,
       translateX: this.mousePos.x - this.bounds.dot.width/2,
       translateY: this.mousePos.y - this.bounds.dot.height/2,
       duration: 70,
