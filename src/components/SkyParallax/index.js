@@ -5,7 +5,7 @@ import ParallaxScene from '../ParallaxScene.js'
 import ParallaxLayer from '../ParallaxLayer.js'
 import ImageElement from '../ImageElement'
 
-import { Container } from './styles'
+import { SkyParallaxContainer } from './styles'
 
 import Moon from '../../assets/moon3.png'
 import Moons from '../../assets/moons.png'
@@ -71,7 +71,7 @@ export default function SkyParallax() {
   const points = GeneratePoints()
 
   return (
-    <Container>
+    <SkyParallaxContainer>
       <ParallaxScene>
         {/* POINTS */}
         {points.map(({obj, depth, bottom, right, width}, i) => (
@@ -168,6 +168,6 @@ export default function SkyParallax() {
           <ImageElement src={Eyes2} bottom="-20%" right="-4%" width="315px" />
         </ParallaxLayer>
       </ParallaxScene>
-    </Container>
+    </SkyParallaxContainer>
   )
 }
