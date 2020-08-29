@@ -14,9 +14,22 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "animejs": "^3.2.0",
     "gatsby": "^2.24.41",
+    "gatsby-plugin-emotion": "^4.3.10",
+    "gatsby-plugin-manifest": "^2.4.26",
+    "gatsby-plugin-react-helmet": "^3.3.10",
+    "object-assign": "^4.1.1",
+    "parallax-js": "^3.1.0",
+    "random-seed": "^0.3.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
+    "react-onclickoutside": "^6.9.0",
+    "screenfull": "^5.0.2",
+    "vanilla-tilt": "^1.7.0"
   },
   "devDependencies": {
     "prettier": "2.0.5"
