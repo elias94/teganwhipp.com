@@ -76,6 +76,7 @@ class Index extends React.PureComponent {
 
     return (
       <HomeContainer>
+        <div className="cursor" ref={this.cursorRef}></div>
         <Helmet>
           <meta charSet="utf-8" />
           <title>Tegan Whipp - Artist</title>
@@ -84,7 +85,6 @@ class Index extends React.PureComponent {
         <ScreenfullToggle />
         <TopMenu onClick={this.onOptionClick} />
         {renderExtra}
-        <div className="cursor" ref={this.cursorRef}></div>
       </HomeContainer>
     )
   }
