@@ -86,5 +86,9 @@ export const MenuContainer = styled.ul`
   li {
     padding: 0 10px;
     color: #FFF;
+
+    span:focus {
+      outline: none;
+    }
   }
 `

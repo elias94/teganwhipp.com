@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Container = styled.div`
+export const ScreenToggleContainer = styled.div`
   position: absolute;
   top: 40px;
   right: 40px;

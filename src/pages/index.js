@@ -76,13 +76,13 @@ class Index extends React.PureComponent {
 
     return (
       <HomeContainer>
-        <div className="cursor" ref={this.cursorRef}></div>
         <Helmet>
           <meta charSet="utf-8" />
           <title>Tegan Whipp - Artist</title>
         </Helmet>
-        <SkyParallax />
+        <div className="cursor" ref={this.cursorRef} />
         <ScreenfullToggle />
+        <SkyParallax />
         <TopMenu onClick={this.onOptionClick} />
         {renderExtra}
       </HomeContainer>
