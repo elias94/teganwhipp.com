@@ -28,6 +28,7 @@ export const Box = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  border-radius: 25px;
 
   transform-style: preserve-3d;
 
