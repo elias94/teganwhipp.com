@@ -80,8 +80,10 @@ class Index extends React.PureComponent {
           <meta charSet="utf-8" />
           <title>Tegan Whipp - Artist</title>
         </Helmet>
+        <span></span>
         <div className="cursor" ref={this.cursorRef} />
         <ScreenfullToggle />
+        <span></span>
         <SkyParallax />
         <TopMenu onClick={this.onOptionClick} />
         {renderExtra}
